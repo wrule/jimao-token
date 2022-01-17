@@ -1,5 +1,5 @@
-const Jimao = artifacts.require("Jimao");
+const Perfma = artifacts.require("Perfma");
 
 module.exports = function (deployer) {
-  deployer.deploy(Jimao);
+  deployer.deploy(Perfma);
 };

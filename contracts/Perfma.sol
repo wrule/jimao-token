@@ -3,9 +3,9 @@ pragma solidity >=0.4.22 <0.9.0;
 
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
-contract Jimao is ERC20 {
+contract Perfma is ERC20 {
   constructor()
-  ERC20("JimaoToken", "JIMAO") {
-    _mint(msg.sender, 21000000 * 1e18);
+  ERC20("PerfmaToken", "PERFMA") {
+    _mint(msg.sender, 1000000000000 * 1e18);
   }
 }
