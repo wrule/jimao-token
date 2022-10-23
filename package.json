@@ -4,5 +4,8 @@
   "main": "index.js",
   "repository": "https://github.com/wrule/jimao-token.git",
   "license": "MIT",
-  "private": false
+  "private": false,
+  "dependencies": {
+    "@openzeppelin/contracts": "^4.7.3"
+  }
 }
