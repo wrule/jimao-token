@@ -8,7 +8,9 @@ function App() {
   return (
     <ConfigProvider locale={zhCN}>
       <Layout className={style.layout}>
-        <Header className={style.header}>你好，世界</Header>
+        <Header className={style.header}>
+          <h1 className={style.title}>Jimao Token</h1>
+        </Header>
         <Content className={style.content}>
           <Button>你好，世界</Button>
         </Content>
