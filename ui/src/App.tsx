@@ -2,13 +2,14 @@ import 'antd/dist/antd.min.css';
 import zhCN from 'antd/es/locale/zh_CN';
 import { Button, ConfigProvider, Layout } from 'antd';
 import { Content, Header } from 'antd/lib/layout/layout';
+import style from './App.module.scss';
 
 function App() {
   return (
     <ConfigProvider locale={zhCN}>
-      <Layout>
-        <Header>你好，世界</Header>
-        <Content>
+      <Layout className={style.layout}>
+        <Header className={style.header}>你好，世界</Header>
+        <Content className={style.content}>
           <Button>你好，世界</Button>
         </Content>
       </Layout>
