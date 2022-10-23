@@ -2,6 +2,10 @@
   "name": "jimao-token",
   "version": "0.1.0",
   "main": "index.js",
+  "scripts": {
+    "build": "truffle compile",
+    "migrate": "truffle migrate"
+  },
   "repository": "https://github.com/wrule/jimao-token.git",
   "license": "MIT",
   "private": false,
