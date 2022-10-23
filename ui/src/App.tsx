@@ -1,8 +1,10 @@
+import 'antd/dist/antd.min.css';
+import { Button } from 'antd';
 
 function App() {
   return (
     <div className="App">
-      <span>你好，世界</span>
+      <Button>你好，世界</Button>
     </div>
   );
 }
