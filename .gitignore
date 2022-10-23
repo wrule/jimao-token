@@ -104,4 +104,6 @@ dist
 .tern-port
 
 build/
+cache-zk/
+artifacts-zk/
 .secret.json
