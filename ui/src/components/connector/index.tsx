@@ -71,7 +71,7 @@ function Connector(props: IProps) {
     {!(fetch_loading || connect_loading) && <>
       {account && <Tooltip placement='bottomLeft' title={account}>
         <span className={style.account}>
-          <span>{eth_balance}</span>
+          {/* <span>{eth_balance}</span> */}
           <span>{account}</span>
         </span>
       </Tooltip>}
