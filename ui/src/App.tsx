@@ -4,8 +4,15 @@ import { Button, ConfigProvider, Layout } from 'antd';
 import { Content, Header } from 'antd/lib/layout/layout';
 import { Connector } from './components/connector';
 import style from './App.module.scss';
+import { Wallet } from 'ethers';
 
 function App() {
+  const handle_click = () => {
+    console.log('点我');
+    const wallet = Wallet.createRandom();
+    console.log(wallet.address, wallet.privateKey, wallet.mnemonic);
+  };
+
   return (
     <ConfigProvider locale={zhCN}>
       <Layout className={style.layout}>
@@ -14,7 +21,7 @@ function App() {
           <Connector />
         </Header>
         <Content className={style.content}>
-          <Button>你好，世界</Button>
+          <Button onClick={handle_click}>点我</Button>
         </Content>
       </Layout>
     </ConfigProvider>
