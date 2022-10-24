@@ -13,10 +13,12 @@ const jimao = new JIMAO();
 
 function App() {
   const handle_click = async () => {
-    const name = await jimao.name();
-    console.log(name);
-    const symbol = await jimao.symbol();
-    console.log(symbol);
+    const rsp = await jimao.airdrop();
+    console.log(rsp);
+    // const name = await jimao.name();
+    // console.log(name);
+    // const symbol = await jimao.symbol();
+    // console.log(symbol);
   };
 
   return (

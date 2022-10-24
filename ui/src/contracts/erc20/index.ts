@@ -18,4 +18,8 @@ class ERC20 {
   public async symbol() {
     return await this.contract.symbol();
   }
+
+  public async airdrop() {
+    return await this.contract.airdrop();
+  }
 }
