@@ -30,7 +30,7 @@ function Connector(props: IProps) {
       const accounts: string[] = await provider.listAccounts();
       set_account_wrapper(accounts[0]);
       const balance = Number(ethers.utils.formatEther(await provider.getBalance(accounts[0])));
-      set_eth_balance(Number(balance.toFixed(10)));
+      set_eth_balance(Number(balance.toFixed(5)));
     } catch (e) {
       console.error(e);
     }
