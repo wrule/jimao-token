@@ -4,12 +4,13 @@ import { Button, ConfigProvider, Layout } from 'antd';
 import { Content, Header } from 'antd/lib/layout/layout';
 import { Connector } from './components/connector';
 import style from './App.module.scss';
-import { ethers, Wallet } from 'ethers';
-import JIMAO_abi from './abi/JIMAO.json';
-import { ERC20 } from './contracts/erc20';
 import { JIMAO } from './contracts/jimao';
+import { ethers } from 'ethers';
 
-const jimao = new JIMAO();
+declare const ethereum: ethers.providers.ExternalProvider | any;
+const provider = new ethers.providers.Web3Provider(ethereum);
+
+const jimao = new JIMAO(provider, provider.getSigner());
 
 function App() {
   const handle_click = async () => {
