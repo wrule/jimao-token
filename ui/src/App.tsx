@@ -5,7 +5,7 @@ import { Content, Header } from 'antd/lib/layout/layout';
 import { Connector } from './components/connector';
 import style from './App.module.scss';
 import { JIMAO } from './contracts/jimao';
-import { ethers } from 'ethers';
+import { BigNumber, ethers } from 'ethers';
 import { USDC } from './contracts/usdc';
 import { USDM } from './contracts/usdm';
 
@@ -36,7 +36,11 @@ function App() {
   };
 
   const handle_usdc_to_usdm = async () => {
-
+    let rsp = await usdc.approve(
+      '0xA16Abc45947931f006cACD0C2f57C07d3e7801dc',
+      BigNumber.from("100000000000000000"),
+    );
+    console.log(rsp);
   };
 
   const handle_usdm_to_usdc = async () => {
