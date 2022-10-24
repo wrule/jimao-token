@@ -1,23 +1,33 @@
 import 'antd/dist/antd.min.css';
 import zhCN from 'antd/es/locale/zh_CN';
-import { Button, ConfigProvider, Layout } from 'antd';
+import { Button, Col, ConfigProvider, Layout, Row, Space } from 'antd';
 import { Content, Header } from 'antd/lib/layout/layout';
 import { Connector } from './components/connector';
 import style from './App.module.scss';
 import { JIMAO } from './contracts/jimao';
 import { ethers } from 'ethers';
+import { USDC } from './contracts/usdc';
+import { USDM } from './contracts/usdm';
 
 const provider = new ethers.providers.Web3Provider(ethereum);
 const jimao = new JIMAO(provider, provider.getSigner());
+const usdc = new USDC(provider, provider.getSigner());
+const usdm = new USDM(provider, provider.getSigner());
 
 function App() {
-  const handle_click = async () => {
+  const handle_get_jimao = async () => {
     const rsp = await jimao.airdrop();
     console.log(rsp);
-    // const name = await jimao.name();
-    // console.log(name);
-    // const symbol = await jimao.symbol();
-    // console.log(symbol);
+  };
+
+  const handle_get_usdc = async () => {
+    const rsp = await usdc.airdrop();
+    console.log(rsp);
+  };
+
+  const handle_get_usdm = async () => {
+    const rsp = await usdm.airdrop();
+    console.log(rsp);
   };
 
   return (
@@ -28,7 +38,15 @@ function App() {
           <Connector />
         </Header>
         <Content className={style.content}>
-          <Button type="primary" onClick={handle_click}>领取我的鸡毛币</Button>
+          <Row>
+            <Col span={24}>
+              <Space>
+                <Button type="primary" onClick={handle_get_jimao}>领取JIMAO</Button>
+                <Button type="primary" onClick={handle_get_usdc}>领取USDC</Button>
+                <Button type="primary" onClick={handle_get_usdm}>领取USDM</Button>
+              </Space>
+            </Col>
+          </Row>
         </Content>
       </Layout>
     </ConfigProvider>
