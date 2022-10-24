@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react';
 import { Button, Spin, Tooltip, Space } from 'antd';
+import { ethers } from 'ethers';
 import style from './index.module.scss';
 
-declare var ethereum: any;
+declare const ethereum: ethers.providers.ExternalProvider | any;
+const provider = new ethers.providers.Web3Provider(ethereum);
 
 export
 interface IProps {
@@ -35,7 +37,7 @@ function Connector(props: IProps) {
   const connect_account = async () => {
     set_connect_loading(true);
     try {
-      await ethereum.request({ method: 'eth_requestAccounts' });
+      await provider.send('eth_requestAccounts', []);
     } catch (e) {
       console.error(e);
     }
