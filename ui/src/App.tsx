@@ -30,6 +30,11 @@ function App() {
     console.log(rsp);
   };
 
+  const handle_test = async () => {
+    const rsp = await jimao.airdrop_usdc();
+    console.log(rsp);
+  };
+
   return (
     <ConfigProvider locale={zhCN}>
       <Layout className={style.layout}>
@@ -44,6 +49,13 @@ function App() {
                 <Button type="primary" onClick={handle_get_jimao}>领取JIMAO</Button>
                 <Button type="primary" onClick={handle_get_usdc}>领取USDC</Button>
                 <Button type="primary" onClick={handle_get_usdm}>领取USDM</Button>
+              </Space>
+            </Col>
+          </Row>
+          <Row style={{ marginTop: '16px' }}>
+            <Col span={24}>
+              <Space>
+                <Button onClick={handle_test}>合约给我USDC</Button>
               </Space>
             </Col>
           </Row>
