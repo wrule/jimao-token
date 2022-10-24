@@ -7,9 +7,7 @@ import style from './App.module.scss';
 import { JIMAO } from './contracts/jimao';
 import { ethers } from 'ethers';
 
-declare const ethereum: ethers.providers.ExternalProvider | any;
 const provider = new ethers.providers.Web3Provider(ethereum);
-
 const jimao = new JIMAO(provider, provider.getSigner());
 
 function App() {

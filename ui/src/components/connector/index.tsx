@@ -3,7 +3,6 @@ import { Button, Spin, Tooltip, Space } from 'antd';
 import { ethers } from 'ethers';
 import style from './index.module.scss';
 
-declare const ethereum: ethers.providers.ExternalProvider | any;
 const provider = new ethers.providers.Web3Provider(ethereum);
 
 export
