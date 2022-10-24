@@ -26,7 +26,7 @@ function Connector(props: IProps) {
   const fetch_account = async () => {
     set_fetch_loading(true);
     try {
-      const accounts: string[] = await ethereum.request({ method: 'eth_accounts' });
+      const accounts: string[] = await provider.listAccounts();
       set_account_wrapper(accounts[0]);
     } catch (e) {
       console.error(e);
