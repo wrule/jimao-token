@@ -35,6 +35,14 @@ function App() {
     console.log(rsp);
   };
 
+  const handle_usdc_to_usdm = async () => {
+
+  };
+
+  const handle_usdm_to_usdc = async () => {
+
+  };
+
   return (
     <ConfigProvider locale={zhCN}>
       <Layout className={style.layout}>
@@ -56,6 +64,8 @@ function App() {
             <Col span={24}>
               <Space>
                 <Button onClick={handle_test}>合约给我USDC</Button>
+                <Button onClick={handle_usdc_to_usdm}>USDC换USDM</Button>
+                <Button onClick={handle_usdm_to_usdc}>USDM换USDC</Button>
               </Space>
             </Col>
           </Row>
