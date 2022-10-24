@@ -46,7 +46,13 @@ function App() {
   };
 
   const handle_usdm_to_usdc = async () => {
-
+    let rsp = await usdm.approve(
+      '0xA16Abc45947931f006cACD0C2f57C07d3e7801dc',
+      BigNumber.from("1000000000000000000"),
+    );
+    console.log(rsp);
+    rsp = await jimao.usdm_to_usdc(BigNumber.from("1000000000000000000"));
+    console.log(rsp);
   };
 
   return (

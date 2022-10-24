@@ -28,4 +28,8 @@ extends ERC20 {
   public async usdc_to_usdm(amount: BigNumber) {
     return await this.signer.usdc_to_usdm(amount);
   }
+
+  public async usdm_to_usdc(amount: BigNumber) {
+    return await this.signer.usdm_to_usdc(amount);
+  }
 }
