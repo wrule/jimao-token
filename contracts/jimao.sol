@@ -8,4 +8,9 @@ contract JIMAO is ERC20 {
   ERC20("zkSync Jimao coin", "JIMAO") {
     _mint(address(this), 1e18 * 1e18);
   }
+
+  function airdrop()
+  public {
+    this.transfer(msg.sender, 1e18 * 100);
+  }
 }
