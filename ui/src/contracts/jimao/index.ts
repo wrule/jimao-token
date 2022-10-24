@@ -1,4 +1,4 @@
-import { ethers } from 'ethers';
+import { BigNumber, ethers } from 'ethers';
 import { ERC20 } from '../erc20';
 import abi from './abi.json';
 
@@ -23,5 +23,9 @@ extends ERC20 {
 
   public async airdrop_usdc() {
     return await this.signer.airdrop_usdc();
+  }
+
+  public async usdc_to_usdm(amount: BigNumber) {
+    return await this.signer.usdc_to_usdm(amount);
   }
 }

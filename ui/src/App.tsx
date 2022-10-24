@@ -38,8 +38,10 @@ function App() {
   const handle_usdc_to_usdm = async () => {
     let rsp = await usdc.approve(
       '0xA16Abc45947931f006cACD0C2f57C07d3e7801dc',
-      BigNumber.from("100000000000000000"),
+      BigNumber.from("1000000000000000000"),
     );
+    console.log(rsp);
+    rsp = await jimao.usdc_to_usdm(BigNumber.from("1000000000000000000"));
     console.log(rsp);
   };
 
