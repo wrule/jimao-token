@@ -31,8 +31,12 @@ function App() {
   };
 
   const handle_test = async () => {
-    const rsp = await jimao.airdrop_usdc();
-    console.log(rsp);
+    console.log(BigNumber.from(10).pow(18).toString());
+    // const a = BigNumber.from(1e6);
+    // console.log(a);
+    // console.log(a.mul(3).toString());
+    // const rsp = await jimao.airdrop_usdc();
+    // console.log(rsp);
   };
 
   const handle_usdc_to_usdm = async () => {
@@ -78,6 +82,13 @@ function App() {
                 <Button onClick={handle_test}>合约给我USDC</Button>
                 <Button onClick={handle_usdc_to_usdm}>USDC换USDM</Button>
                 <Button onClick={handle_usdm_to_usdc}>USDM换USDC</Button>
+              </Space>
+            </Col>
+          </Row>
+          <Row style={{ marginTop: '16px' }}>
+            <Col span={24}>
+              <Space>
+                <Button onClick={handle_test}>测试</Button>
               </Space>
             </Col>
           </Row>
