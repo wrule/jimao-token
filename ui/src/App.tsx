@@ -4,13 +4,24 @@ import { Button, ConfigProvider, Layout } from 'antd';
 import { Content, Header } from 'antd/lib/layout/layout';
 import { Connector } from './components/connector';
 import style from './App.module.scss';
-import { Wallet } from 'ethers';
+import { ethers, Wallet } from 'ethers';
+import JIMAO_abi from './abi/JIMAO.json';
+
+declare const ethereum: ethers.providers.ExternalProvider | any;
+const provider = new ethers.providers.Web3Provider(ethereum);
+const JIMAO_address = '0x5cBd28D3955Cc593FAb81Bef8cbF41ccCdc7F0a0';
+
+const JIMAO = new ethers.Contract(JIMAO_address, JIMAO_abi.abi, provider);
 
 function App() {
-  const handle_click = () => {
+  const handle_click = async () => {
     console.log('点我');
-    const wallet = Wallet.createRandom();
-    console.log(wallet.address, wallet.privateKey, wallet.mnemonic);
+    const name = await JIMAO.symbol();
+    console.log(name);
+
+
+    // const wallet = Wallet.createRandom();
+    // console.log(wallet.address, wallet.privateKey, wallet.mnemonic);
   };
 
   return (
