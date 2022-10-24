@@ -18,10 +18,6 @@ function App() {
     console.log('点我');
     const name = await JIMAO.symbol();
     console.log(name);
-
-
-    // const wallet = Wallet.createRandom();
-    // console.log(wallet.address, wallet.privateKey, wallet.mnemonic);
   };
 
   return (
@@ -32,7 +28,7 @@ function App() {
           <Connector />
         </Header>
         <Content className={style.content}>
-          <Button onClick={handle_click}>点我</Button>
+          <Button type="primary" onClick={handle_click}>领取我的鸡毛币</Button>
         </Content>
       </Layout>
     </ConfigProvider>
