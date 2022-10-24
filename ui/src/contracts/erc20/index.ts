@@ -10,4 +10,12 @@ class ERC20 {
   }
 
   private contract!: ethers.Contract;
+
+  public async name() {
+    return await this.contract.name();
+  }
+
+  public async symbol() {
+    return await this.contract.symbol();
+  }
 }
