@@ -7,17 +7,15 @@ import style from './App.module.scss';
 import { ethers, Wallet } from 'ethers';
 import JIMAO_abi from './abi/JIMAO.json';
 import { ERC20 } from './contracts/erc20';
+import { JIMAO } from './contracts/jimao';
 
-declare const ethereum: ethers.providers.ExternalProvider | any;
-const provider = new ethers.providers.Web3Provider(ethereum);
-const JIMAO_address = '0x9f99ff7cf6F7BdD03E3E39841773F80222cc67B7';
-const JIMAO = new ERC20(JIMAO_address, JIMAO_abi.abi, provider);
+const jimao = new JIMAO();
 
 function App() {
   const handle_click = async () => {
-    const name = await JIMAO.name();
+    const name = await jimao.name();
     console.log(name);
-    const symbol = await JIMAO.symbol();
+    const symbol = await jimao.symbol();
     console.log(symbol);
   };
 
