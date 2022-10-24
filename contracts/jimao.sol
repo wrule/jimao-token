@@ -18,13 +18,22 @@ contract JIMAO is ERC20 {
     this.transfer(msg.sender, 1e18 * 100);
   }
 
-  function usdc_to_usdm()
+  function airdrop_usdc()
   public {
-
+    USDC.transfer(msg.sender, 1e18 * 50);
   }
 
-  function usdm_to_usdc()
+  function usdc_to_usdm(uint amount)
   public {
+    require(USDC.allowance(msg.sender, address(this)) >= amount, "error");
+    require(USDC.transferFrom(msg.sender, address(this), amount), "error");
+    USDM.transfer(msg.sender, amount);
+  }
 
+  function usdm_to_usdc(uint amount)
+  public {
+    require(USDM.allowance(msg.sender, address(this)) >= amount, "error");
+    require(USDM.transferFrom(msg.sender, address(this), amount), "error");
+    USDC.transfer(msg.sender, amount);
   }
 }
