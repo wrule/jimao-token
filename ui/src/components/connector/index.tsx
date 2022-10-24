@@ -14,6 +14,7 @@ interface IProps {
 export
 function Connector(props: IProps) {
   const [account, set_account] = useState<string>('');
+  const [eth_balance, set_eth_balance] = useState<number>(0);
   const [fetch_loading, set_fetch_loading] = useState<boolean>(false);
   const [connect_loading, set_connect_loading] = useState<boolean>(false);
 
@@ -28,6 +29,8 @@ function Connector(props: IProps) {
     try {
       const accounts: string[] = await provider.listAccounts();
       set_account_wrapper(accounts[0]);
+      const balance = Number(ethers.utils.formatEther(await provider.getBalance(accounts[0])));
+      set_eth_balance(Number(balance.toFixed(10)));
     } catch (e) {
       console.error(e);
     }
@@ -66,7 +69,12 @@ function Connector(props: IProps) {
       <span>正在连接钱包...</span>
     </Space>}
     {!(fetch_loading || connect_loading) && <>
-      {account && <Tooltip placement='bottomLeft' title={account}><span className={style.account}>{account}</span></Tooltip>}
+      {account && <Tooltip placement='bottomLeft' title={account}>
+        <span className={style.account}>
+          <span>{eth_balance}</span>
+          <span>{account}</span>
+        </span>
+      </Tooltip>}
       {!account && <Button size="small" type="primary" onClick={connect_account}>连接钱包</Button>}
     </>}
   </div>;
