@@ -9,7 +9,7 @@ class ERC20 {
     this.contract = new ethers.Contract(...parameters);
   }
 
-  private contract!: ethers.Contract;
+  protected contract!: ethers.Contract;
 
   public async name() {
     return await this.contract.name();
