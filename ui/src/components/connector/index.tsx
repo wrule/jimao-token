@@ -56,11 +56,11 @@ function Connector(props: IProps) {
 
   return <div className={style.com}>
     {fetch_loading && <Space>
-      <Spin size="small" />
+      <Spin className={style.spin} size="small" />
       <span>正在获取账户...</span>
     </Space>}
     {connect_loading && <Space>
-      <Spin size="small" />
+      <Spin className={style.spin} size="small" />
       <span>正在连接钱包...</span>
     </Space>}
     {!(fetch_loading || connect_loading) && <>
