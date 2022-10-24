@@ -12,7 +12,7 @@ extends ERC20 {
     super(
       '0x9f99ff7cf6F7BdD03E3E39841773F80222cc67B7',
       abi.abi,
-      provider,
+      provider.getSigner(),
     );
   }
 }
