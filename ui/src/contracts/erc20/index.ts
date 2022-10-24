@@ -1,25 +1,19 @@
+import { Contract } from '../';
 
-import { ethers } from 'ethers';
-
-type ContractConstructorParameters = ConstructorParameters<typeof ethers.Contract>;
+type ContractConstructorParameters = ConstructorParameters<typeof Contract>;
 
 export
-class ERC20 {
+class ERC20
+extends Contract {
   public constructor(...parameters: ContractConstructorParameters) {
-    this.contract = new ethers.Contract(...parameters);
+    super(...parameters);
   }
 
-  protected contract!: ethers.Contract;
-
   public async name() {
-    return await this.contract.name();
+    return await this.provider.name();
   }
 
   public async symbol() {
-    return await this.contract.symbol();
-  }
-
-  public async airdrop() {
-    return await this.contract.airdrop();
+    return await this.provider.symbol();
   }
 }
