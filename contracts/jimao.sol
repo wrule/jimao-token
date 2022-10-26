@@ -18,7 +18,7 @@ contract JIMAO is ERC20 {
   function airdrop()
   public {
     require(balanceOf(address(this)) >= airdrop_amount, "error");
-    transfer(msg.sender, airdrop_amount);
+    this.transfer(msg.sender, airdrop_amount);
   }
 
   function usdc_to_usdm(uint amount)
