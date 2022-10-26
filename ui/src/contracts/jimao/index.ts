@@ -10,7 +10,7 @@ extends ERC20 {
     _signer: ethers.Signer,
   ) {
     super(
-      '0xA16Abc45947931f006cACD0C2f57C07d3e7801dc',
+      '0xCed7C85dA8D1A924E362dd55E4F43B63C1F3c7F9',
       abi.abi,
       _provider,
       _signer,
@@ -19,10 +19,6 @@ extends ERC20 {
 
   public async airdrop() {
     return await this.signer.airdrop();
-  }
-
-  public async airdrop_usdc() {
-    return await this.signer.airdrop_usdc();
   }
 
   public async usdc_to_usdm(amount: BigNumber) {
