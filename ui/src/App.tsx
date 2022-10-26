@@ -8,6 +8,7 @@ import { JIMAO } from './contracts/jimao';
 import { BigNumber, ethers } from 'ethers';
 import { USDC } from './contracts/usdc';
 import { USDM } from './contracts/usdm';
+import { useEffect, useState } from 'react';
 
 const provider = new ethers.providers.Web3Provider(ethereum);
 const jimao = new JIMAO(provider, provider.getSigner());
@@ -15,6 +16,32 @@ const usdc = new USDC(provider, provider.getSigner());
 const usdm = new USDM(provider, provider.getSigner());
 
 function App() {
+  const [usdc_amount, set_usdc_amount] = useState<string>('1234.12222223');
+  const [usdm_amount, set_usdm_amount] = useState<string>('-');
+  const [jimao_amount, set_jimao_amount] = useState<string>('-');
+
+  const update_amounts = async () => {
+    const [
+      usdc_balance, usdc_decimals,
+      usdm_balance, usdm_decimals,
+      jimao_balance, jimao_decimals,
+    ] = await Promise.all([
+      usdc.balanceOf(jimao.addressOrName),
+      usdc.decimals(),
+      usdm.balanceOf(jimao.addressOrName),
+      usdm.decimals(),
+      jimao.balanceOf(jimao.addressOrName),
+      jimao.decimals(),
+    ]);
+    set_usdc_amount(usdc_balance.div(BigNumber.from(10).pow(usdc_decimals)).toString());
+    set_usdm_amount(usdm_balance.div(BigNumber.from(10).pow(usdm_decimals)).toString());
+    set_jimao_amount(jimao_balance.div(BigNumber.from(10).pow(jimao_decimals)).toString());
+  };
+
+  useEffect(() => {
+    update_amounts();
+  }, []);
+
   const handle_get_jimao = async () => {
     const rsp = await jimao.airdrop();
     console.log(rsp);
@@ -65,13 +92,13 @@ function App() {
         <Content className={style.content}>
           <Row>
             <Col span={4}>
-              <Statistic title="USDC池" value={112893} />
+              <Statistic title="USDC池" value={usdc_amount} />
             </Col>
             <Col span={4}>
-              <Statistic title="USDM池" value={112893} />
+              <Statistic title="USDM池" value={usdm_amount} />
             </Col>
             <Col span={4}>
-              <Statistic title="JIMAO池" value={112893} />
+              <Statistic title="JIMAO池" value={jimao_amount} />
             </Col>
           </Row>
           <Divider />

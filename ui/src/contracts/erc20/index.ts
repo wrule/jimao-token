@@ -21,4 +21,12 @@ extends Contract {
   public async approve(address: string, amount: BigNumber) {
     return await this.signer.approve(address, amount);
   }
+
+  public async balanceOf(address: string): Promise<BigNumber> {
+    return await this.provider.balanceOf(address);
+  }
+
+  public async decimals(): Promise<number> {
+    return await this.provider.decimals();
+  }
 }
