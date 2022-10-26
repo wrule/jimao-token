@@ -40,22 +40,18 @@ function App() {
   };
 
   const handle_usdc_to_usdm = async () => {
-    let rsp = await usdc.approve(
-      '0xb8F168AbE0EfC31A756C9A1470544Dfd1d37C231',
-      BigNumber.from("1000000000000000000"),
-    );
+    const amount = BigNumber.from(10).pow(18).mul(3);
+    let rsp = await usdc.approve(jimao.addressOrName, amount);
     console.log(rsp);
-    rsp = await jimao.usdc_to_usdm(BigNumber.from("1000000000000000000"));
+    rsp = await jimao.usdc_to_usdm(amount);
     console.log(rsp);
   };
 
   const handle_usdm_to_usdc = async () => {
-    let rsp = await usdm.approve(
-      '0xb8F168AbE0EfC31A756C9A1470544Dfd1d37C231',
-      BigNumber.from("1000000000000000000"),
-    );
+    const amount = BigNumber.from(10).pow(18).mul(3);
+    let rsp = await usdm.approve(jimao.addressOrName, amount);
     console.log(rsp);
-    rsp = await jimao.usdm_to_usdc(BigNumber.from("1000000000000000000"));
+    rsp = await jimao.usdm_to_usdc(amount);
     console.log(rsp);
   };
 
