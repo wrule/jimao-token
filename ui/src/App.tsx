@@ -1,6 +1,6 @@
 import 'antd/dist/antd.min.css';
 import zhCN from 'antd/es/locale/zh_CN';
-import { Button, Col, ConfigProvider, Layout, Row, Space } from 'antd';
+import { Button, Col, ConfigProvider, Divider, Layout, Row, Space, Statistic } from 'antd';
 import { Content, Header } from 'antd/lib/layout/layout';
 import { Connector } from './components/connector';
 import style from './App.module.scss';
@@ -64,6 +64,27 @@ function App() {
         </Header>
         <Content className={style.content}>
           <Row>
+            <Col span={4}>
+              <Statistic title="USDC池" value={112893} />
+            </Col>
+            <Col span={4}>
+              <Statistic title="USDM池" value={112893} />
+            </Col>
+            <Col span={4}>
+              <Statistic title="JIMAO池" value={112893} />
+            </Col>
+          </Row>
+          <Divider />
+          <Row style={{ marginTop: '16px' }}>
+            <Col span={4}>
+              <Statistic title="USDC对价" value={112893} />
+            </Col>
+            <Col span={4}>
+              <Statistic title="USDM对价" value={112893} />
+            </Col>
+          </Row>
+          <Divider />
+          <Row style={{ marginTop: '16px' }}>
             <Col span={24}>
               <Space>
                 <Button type="primary" onClick={handle_get_jimao}>领取JIMAO</Button>
