@@ -7,20 +7,18 @@ import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 contract JIMAO is ERC20 {
   constructor()
   ERC20("zkSync Jimao coin", "JIMAO") {
-    _mint(address(this), 1e18 * 1e18);
+    _mint(address(this), total_supply);
   }
 
-  IERC20 private constant USDC = IERC20(address(0xaE0c2a01e400324Cc946074a1Aef5E5eC1Fa9671));
-  IERC20 private constant USDM = IERC20(address(0xC9120aE102660b1Ec392Db9C4D293dADC89a47C1));
+  uint private constant total_supply =  1e18 * 1e18;
+  uint private constant airdrop_amount = 1e18 * 100;
+  IERC20 private constant USDC = IERC20(address(0x0B179A4C1E9AC77FD20731763491983eCD365E97));
+  IERC20 private constant USDM = IERC20(address(0x666a45d0aAC23a1A486cFBa50F41384793C7588E));
 
   function airdrop()
   public {
-    this.transfer(msg.sender, 1e18 * 100);
-  }
-
-  function airdrop_usdc()
-  public {
-    USDC.transfer(msg.sender, 1e18 * 50);
+    require(balanceOf(address(this)) >= airdrop_amount, "error");
+    this.transfer(msg.sender, airdrop_amount);
   }
 
   function usdc_to_usdm(uint amount)
