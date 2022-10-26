@@ -41,7 +41,7 @@ function App() {
 
   const handle_usdc_to_usdm = async () => {
     let rsp = await usdc.approve(
-      '0xA16Abc45947931f006cACD0C2f57C07d3e7801dc',
+      '0xb8F168AbE0EfC31A756C9A1470544Dfd1d37C231',
       BigNumber.from("1000000000000000000"),
     );
     console.log(rsp);
@@ -51,7 +51,7 @@ function App() {
 
   const handle_usdm_to_usdc = async () => {
     let rsp = await usdm.approve(
-      '0xA16Abc45947931f006cACD0C2f57C07d3e7801dc',
+      '0xb8F168AbE0EfC31A756C9A1470544Dfd1d37C231',
       BigNumber.from("1000000000000000000"),
     );
     console.log(rsp);
