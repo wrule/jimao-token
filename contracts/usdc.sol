@@ -14,7 +14,7 @@ contract USDC is ERC20 {
 
   function airdrop()
   public {
-    require(this.balanceOf(address(this)) >= airdrop_amount, "error");
+    require(balanceOf(address(this)) >= airdrop_amount, "error");
     this.transfer(msg.sender, airdrop_amount);
   }
 }

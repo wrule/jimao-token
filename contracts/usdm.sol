@@ -6,11 +6,15 @@ import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 contract USDM is ERC20 {
   constructor()
   ERC20("USDM", "USDM") {
-    _mint(address(this), 1e18 * 1e18);
+    _mint(address(this), total_supply);
   }
+
+  uint private constant total_supply =  1e18 * 1e18;
+  uint private constant airdrop_amount = 1e18 * 100;
 
   function airdrop()
   public {
-    this.transfer(msg.sender, 1e18 * 100);
+    require(balanceOf(address(this)) >= airdrop_amount, "error");
+    this.transfer(msg.sender, airdrop_amount);
   }
 }
