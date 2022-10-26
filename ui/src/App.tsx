@@ -16,9 +16,9 @@ const usdc = new USDC(provider, provider.getSigner());
 const usdm = new USDM(provider, provider.getSigner());
 
 function App() {
-  const [usdc_amount, set_usdc_amount] = useState<string>('1234.12222223');
-  const [usdm_amount, set_usdm_amount] = useState<string>('-');
-  const [jimao_amount, set_jimao_amount] = useState<string>('-');
+  const [usdc_amount, set_usdc_amount] = useState<string>();
+  const [usdm_amount, set_usdm_amount] = useState<string>();
+  const [jimao_amount, set_jimao_amount] = useState<string>();
 
   const update_amounts = async () => {
     const [
@@ -36,6 +36,24 @@ function App() {
     set_usdc_amount(usdc_balance.div(BigNumber.from(10).pow(usdc_decimals)).toString());
     set_usdm_amount(usdm_balance.div(BigNumber.from(10).pow(usdm_decimals)).toString());
     set_jimao_amount(jimao_balance.div(BigNumber.from(10).pow(jimao_decimals)).toString());
+  };
+
+  const usdc_price = () => {
+    try {
+      const source = BigNumber.from(usdc_amount).toNumber();
+      const target = BigNumber.from(usdm_amount).toNumber();
+      return (source / target).toString();
+    } catch (e) { }
+    return '';
+  };
+
+  const usdm_price = () => {
+    try {
+      const source = BigNumber.from(usdm_amount).toNumber();
+      const target = BigNumber.from(usdc_amount).toNumber();
+      return (source / target).toString();
+    } catch (e) { }
+    return '';
   };
 
   useEffect(() => {
@@ -104,10 +122,10 @@ function App() {
           <Divider />
           <Row style={{ marginTop: '16px' }}>
             <Col span={4}>
-              <Statistic title="USDC对价" value={112893} />
+              <Statistic title="USDC对价" value={usdc_price()} />
             </Col>
             <Col span={4}>
-              <Statistic title="USDM对价" value={112893} />
+              <Statistic title="USDM对价" value={usdm_price()} />
             </Col>
           </Row>
           <Divider />
