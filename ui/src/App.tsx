@@ -109,22 +109,22 @@ function App() {
         </Header>
         <Content className={style.content}>
           <Row>
-            <Col span={4}>
+            <Col span={8}>
               <Statistic title="USDC池" value={usdc_amount} />
             </Col>
-            <Col span={4}>
+            <Col span={8}>
               <Statistic title="USDM池" value={usdm_amount} />
             </Col>
-            <Col span={4}>
+            <Col span={8}>
               <Statistic title="JIMAO池" value={jimao_amount} />
             </Col>
           </Row>
           <Divider />
           <Row style={{ marginTop: '16px' }}>
-            <Col span={4}>
+            <Col span={8}>
               <Statistic title="USDC对价" value={usdc_price()} />
             </Col>
-            <Col span={4}>
+            <Col span={8}>
               <Statistic title="USDM对价" value={usdm_price()} />
             </Col>
           </Row>
