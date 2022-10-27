@@ -11,7 +11,8 @@
   "license": "MIT",
   "private": false,
   "dependencies": {
-    "@openzeppelin/contracts": "^4.7.3"
+    "@openzeppelin/contracts": "^4.7.3",
+    "@truffle/hdwallet-provider": "^2.1.0"
   },
   "devDependencies": {
     "@matterlabs/hardhat-zksync-deploy": "^0.5.1",
