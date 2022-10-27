@@ -7,7 +7,8 @@ const secret = require('../.secret.json');
 
 // An example of a deploy script that will deploy and call a simple contract.
 export default async function (hre: HardhatRuntimeEnvironment) {
-  console.log(`Running deploy script for the JIMAO contract`);
+  const contract_name = 'USDC';
+  console.log(`开始运行 ${contract_name} 合约部署脚本`);
 
   // Initialize the wallet.
   const provider = new Provider(hre.userConfig.zkSyncDeploy?.zkSyncNetwork);
@@ -15,7 +16,7 @@ export default async function (hre: HardhatRuntimeEnvironment) {
 
   // Create deployer object and load the artifact of the contract you want to deploy.
   const deployer = new Deployer(hre, wallet);
-  const artifact = await deployer.loadArtifact('JIMAO');
+  const artifact = await deployer.loadArtifact(contract_name);
 
   // Estimate contract deployment fee
   const deploymentFee = await deployer.estimateDeployFee(artifact, []);
@@ -32,14 +33,14 @@ export default async function (hre: HardhatRuntimeEnvironment) {
   // Deploy this contract. The returned object will be of a `Contract` type, similarly to ones in `ethers`.
   // `greeting` is an argument for contract constructor.
   const parsedFee = ethers.utils.formatEther(deploymentFee.toString());
-  console.log(`The deployment is estimated to cost ${parsedFee} ETH`);
+  console.log(`预计部署成本为 ${parsedFee} ETH`);
 
   const greeterContract = await deployer.deploy(artifact, []);
 
   //obtain the Constructor Arguments
-  console.log('constructor args:' + greeterContract.interface.encodeDeploy([]));
+  console.log('构造函数参数: ' + greeterContract.interface.encodeDeploy([]));
 
   // Show the contract info.
   const contractAddress = greeterContract.address;
-  console.log(`${artifact.contractName} was deployed to ${contractAddress}`);
+  console.log(`${artifact.contractName} 已经部署到 ${contractAddress}`);
 }
