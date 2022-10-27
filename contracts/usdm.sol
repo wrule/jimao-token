@@ -14,7 +14,7 @@ contract USDM is ERC20 {
 
   function airdrop()
   public {
-    require(balanceOf(address(this)) >= airdrop_amount, "error");
+    require(this.balanceOf(address(this)) >= airdrop_amount, "error");
     this.transfer(msg.sender, airdrop_amount);
   }
 }
