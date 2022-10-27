@@ -71,11 +71,15 @@ function App() {
   const handle_get_usdc = async () => {
     const rsp = await usdc.airdrop();
     console.log(rsp);
+    await usdc._provider.waitForTransaction(rsp.hash);
+    message.success('USDC领取成功');
   };
 
   const handle_get_usdm = async () => {
     const rsp = await usdm.airdrop();
     console.log(rsp);
+    await usdm._provider.waitForTransaction(rsp.hash);
+    message.success('USDM领取成功');
   };
 
   const handle_test = async () => {
