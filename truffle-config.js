@@ -46,7 +46,7 @@
 
 const HDWalletProvider = require('@truffle/hdwallet-provider');
 
-const secret = require('../.secret.json');
+const secret = require('./.secret.json');
 
 module.exports = {
   /**
