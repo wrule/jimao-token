@@ -10,7 +10,7 @@ extends ERC20 {
     _signer: ethers.Signer,
   ) {
     super(
-      '0x0B179A4C1E9AC77FD20731763491983eCD365E97',
+      '0x9a1e4249F4694387E168bfA187D8D2b15700731a',
       abi.abi,
       _provider,
       _signer,
