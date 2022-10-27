@@ -104,8 +104,9 @@ function App() {
     console.log(rsp);
     rsp = await jimao.usdm_to_usdc(amount);
     console.log(rsp);
-    const a = await jimao._provider.waitForTransaction(rsp.hash);
+    const a = await jimao._provider.waitForTransaction(rsp.hash, 2);
     message.success('兑换成功');
+    console.log('哈哈哈哈');
     update_amounts();
   };
 
