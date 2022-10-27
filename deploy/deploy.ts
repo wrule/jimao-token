@@ -1,7 +1,7 @@
-import { Wallet, Provider, utils } from "zksync-web3";
-import * as ethers from "ethers";
-import { HardhatRuntimeEnvironment } from "hardhat/types";
-import { Deployer } from "@matterlabs/hardhat-zksync-deploy";
+import { Wallet, Provider, utils } from 'zksync-web3';
+import * as ethers from 'ethers';
+import { HardhatRuntimeEnvironment } from 'hardhat/types';
+import { Deployer } from '@matterlabs/hardhat-zksync-deploy';
 
 const secret = require('../.secret.json');
 
@@ -15,7 +15,7 @@ export default async function (hre: HardhatRuntimeEnvironment) {
 
   // Create deployer object and load the artifact of the contract you want to deploy.
   const deployer = new Deployer(hre, wallet);
-  const artifact = await deployer.loadArtifact("JIMAO");
+  const artifact = await deployer.loadArtifact('JIMAO');
 
   // Estimate contract deployment fee
   const deploymentFee = await deployer.estimateDeployFee(artifact, []);
@@ -37,7 +37,7 @@ export default async function (hre: HardhatRuntimeEnvironment) {
   const greeterContract = await deployer.deploy(artifact, []);
 
   //obtain the Constructor Arguments
-  console.log("constructor args:" + greeterContract.interface.encodeDeploy([]));
+  console.log('constructor args:' + greeterContract.interface.encodeDeploy([]));
 
   // Show the contract info.
   const contractAddress = greeterContract.address;
