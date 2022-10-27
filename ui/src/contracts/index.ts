@@ -8,8 +8,8 @@ class Contract {
   public constructor(
     private readonly _addressOrName: ContractConstructorParameters[0],
     private readonly _contractInterface: ContractConstructorParameters[1],
-    private readonly _provider: ethers.providers.Provider,
-    private readonly _signer: ethers.Signer,
+    public readonly _provider: ethers.providers.Provider,
+    public readonly _signer: ethers.Signer,
   ) { }
 
   public get addressOrName() {

@@ -1,6 +1,6 @@
 import 'antd/dist/antd.min.css';
 import zhCN from 'antd/es/locale/zh_CN';
-import { Button, Col, ConfigProvider, Divider, Layout, Row, Space, Statistic } from 'antd';
+import { Button, Col, ConfigProvider, Divider, Layout, Row, Space, Statistic, message } from 'antd';
 import { Content, Header } from 'antd/lib/layout/layout';
 import { Connector } from './components/connector';
 import style from './App.module.scss';
@@ -61,8 +61,11 @@ function App() {
   }, []);
 
   const handle_get_jimao = async () => {
-    const rsp = await jimao.airdrop();
-    console.log(rsp);
+    let rsp = await jimao.airdrop();
+    console.log(rsp.hash);
+    const a = await jimao._provider.waitForTransaction(rsp.hash);
+    message.success('鸡毛币领取成功');
+    update_amounts();
   };
 
   const handle_get_usdc = async () => {
