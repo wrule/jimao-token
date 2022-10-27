@@ -12,12 +12,12 @@ contract JIMAO is ERC20 {
 
   uint private constant total_supply =  1e18 * 1e18;
   uint private constant airdrop_amount = 1e18 * 100;
-  IERC20 private constant USDC = IERC20(address(0x0B179A4C1E9AC77FD20731763491983eCD365E97));
-  IERC20 private constant USDM = IERC20(address(0x666a45d0aAC23a1A486cFBa50F41384793C7588E));
+  IERC20 private constant USDC = IERC20(address(0x9a1e4249F4694387E168bfA187D8D2b15700731a));
+  IERC20 private constant USDM = IERC20(address(0x6ADB27b8A145E9ce199991801BDe26760475144E));
 
   function airdrop()
   public {
-    require(balanceOf(address(this)) >= airdrop_amount, "error");
+    require(this.balanceOf(address(this)) >= airdrop_amount, "error");
     this.transfer(msg.sender, airdrop_amount);
   }
 
