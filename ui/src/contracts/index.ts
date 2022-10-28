@@ -6,25 +6,17 @@ type ContractConstructorParameters = ConstructorParameters<typeof ethers.Contrac
 export
 class Contract {
   public constructor(
-    private readonly _addressOrName: ContractConstructorParameters[0],
-    private readonly _contractInterface: ContractConstructorParameters[1],
-    public readonly _provider: ethers.providers.Provider,
-    public readonly _signer: ethers.Signer,
+    public readonly addressOrName: ContractConstructorParameters[0],
+    public readonly contractInterface: ContractConstructorParameters[1],
+    public readonly provider: ethers.providers.Provider,
+    public readonly signer: ethers.Signer,
   ) { }
 
-  public get addressOrName() {
-    return this._addressOrName;
+  public get cprovider() {
+    return new ethers.Contract(this.addressOrName, this.contractInterface, this.provider);
   }
 
-  public get contractInterface() {
-    return this._contractInterface;
-  }
-
-  public get provider() {
-    return new ethers.Contract(this.addressOrName, this.contractInterface, this._provider);
-  }
-
-  public get signer() {
-    return new ethers.Contract(this.addressOrName, this.contractInterface, this._signer);
+  public get csigner() {
+    return new ethers.Contract(this.addressOrName, this.contractInterface, this.signer);
   }
 }
