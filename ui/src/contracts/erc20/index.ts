@@ -10,11 +10,11 @@ extends Contract {
     super(...parameters);
   }
 
-  public async name() {
+  public async name(): Promise<string> {
     return await this.cprovider.name();
   }
 
-  public async symbol() {
+  public async symbol(): Promise<string> {
     return await this.cprovider.symbol();
   }
 
