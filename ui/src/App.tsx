@@ -81,35 +81,23 @@ function App() {
     update_amounts();
   };
 
-  const handle_test = async () => {
-    console.log(BigNumber.from(10).pow(18).toString());
-    // const a = BigNumber.from(1e6);
-    // console.log(a);
-    // console.log(a.mul(3).toString());
-    // const rsp = await jimao.airdrop_usdc();
-    // console.log(rsp);
-  };
-
   const handle_usdc_to_usdm = async () => {
-    const amount = BigNumber.from(10).pow(18).mul(3);
-    let rsp = await usdc.approve(jimao.addressOrName, amount);
-    console.log(rsp);
-    rsp = await jimao.usdc_to_usdm(amount);
-    console.log(rsp);
-    const a = await jimao.provider.waitForTransaction(rsp.hash);
-    message.success('兑换成功');
+    const amount = BigNumber.from(10).pow(18).mul(1);
+    let tx = await usdc.approve(jimao.addressOrName, amount);
+    await tx.wait();
+    tx = await jimao.usdc_to_usdm(amount);
+    await tx.wait();
+    message.success('USDM兑换成功');
     update_amounts();
   };
 
   const handle_usdm_to_usdc = async () => {
-    const amount = BigNumber.from(10).pow(18).mul(3);
-    let rsp = await usdm.approve(jimao.addressOrName, amount);
-    console.log(rsp);
-    rsp = await jimao.usdm_to_usdc(amount);
-    console.log(rsp);
-    const a = await jimao.provider.waitForTransaction(rsp.hash, 2);
-    message.success('兑换成功');
-    console.log('哈哈哈哈');
+    const amount = BigNumber.from(10).pow(18).mul(1);
+    let tx = await usdm.approve(jimao.addressOrName, amount);
+    await tx.wait();
+    tx = await jimao.usdm_to_usdc(amount);
+    await tx.wait();
+    message.success('USDC兑换成功');
     update_amounts();
   };
 
@@ -159,13 +147,13 @@ function App() {
               </Space>
             </Col>
           </Row>
-          <Row style={{ marginTop: '16px' }}>
+          {/* <Row style={{ marginTop: '16px' }}>
             <Col span={24}>
               <Space>
                 <Button onClick={handle_test}>测试</Button>
               </Space>
             </Col>
-          </Row>
+          </Row> */}
         </Content>
       </Layout>
     </ConfigProvider>
