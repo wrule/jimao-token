@@ -17,13 +17,16 @@ async function main() {
   // const balance = await jimao.balanceOf(wallet.address);
   // console.log(balance.toString());
 
-  console.log('发送...');
-  const tx = await wallet.sendTransaction({
-    to: '',
-    value: ethers.utils.parseEther('0.1'),
-  });
-  console.log('确认...');
-  await tx.wait();
+  while (true) {
+    console.log('发送...');
+    const tx = await wallet.sendTransaction({
+      to: '0x28dF8c4d5fc59cA685546e817772181Fb717E503',
+      value: ethers.utils.parseEther('0.1'),
+    });
+    console.log('确认...');
+    await tx.wait();
+    console.log('完成');
+  }
 
   // while (true) {
   //   const rwallet = ethers.Wallet.createRandom();
