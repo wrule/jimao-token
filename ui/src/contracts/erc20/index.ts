@@ -1,4 +1,4 @@
-import { BigNumber } from 'ethers';
+import { BigNumber, ethers } from 'ethers';
 import { Contract } from '../';
 
 type ContractConstructorParameters = ConstructorParameters<typeof Contract>;
@@ -18,7 +18,7 @@ extends Contract {
     return await this.cprovider.symbol();
   }
 
-  public async approve(address: string, amount: BigNumber) {
+  public async approve(address: string, amount: BigNumber): Promise<ethers.providers.TransactionResponse> {
     return await this.csigner.approve(address, amount);
   }
 

@@ -17,15 +17,15 @@ extends ERC20 {
     );
   }
 
-  public async airdrop() {
+  public async airdrop(): Promise<ethers.providers.TransactionResponse>  {
     return await this.csigner.airdrop();
   }
 
-  public async usdc_to_usdm(amount: BigNumber) {
+  public async usdc_to_usdm(amount: BigNumber): Promise<ethers.providers.TransactionResponse>  {
     return await this.csigner.usdc_to_usdm(amount);
   }
 
-  public async usdm_to_usdc(amount: BigNumber) {
+  public async usdm_to_usdc(amount: BigNumber): Promise<ethers.providers.TransactionResponse>  {
     return await this.csigner.usdm_to_usdc(amount);
   }
 }

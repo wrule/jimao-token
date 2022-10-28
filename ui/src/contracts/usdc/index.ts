@@ -17,7 +17,7 @@ extends ERC20 {
     );
   }
 
-  public async airdrop() {
+  public async airdrop(): Promise<ethers.providers.TransactionResponse>  {
     return await this.csigner.airdrop();
   }
 }
