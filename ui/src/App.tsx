@@ -61,25 +61,24 @@ function App() {
   }, []);
 
   const handle_get_jimao = async () => {
-    let rsp = await jimao.airdrop();
-    console.log(rsp.hash);
-    const a = await jimao.provider.waitForTransaction(rsp.hash);
-    message.success('鸡毛币领取成功');
+    const tx = await jimao.airdrop();
+    await tx.wait();
+    message.success('JIMAO领取成功');
     update_amounts();
   };
 
   const handle_get_usdc = async () => {
-    const rsp = await usdc.airdrop();
-    console.log(rsp);
-    await usdc.provider.waitForTransaction(rsp.hash);
+    const tx = await usdc.airdrop();
+    await tx.wait();
     message.success('USDC领取成功');
+    update_amounts();
   };
 
   const handle_get_usdm = async () => {
-    const rsp = await usdm.airdrop();
-    console.log(rsp);
-    await usdm.provider.waitForTransaction(rsp.hash);
+    const tx = await usdm.airdrop();
+    await tx.wait();
     message.success('USDM领取成功');
+    update_amounts();
   };
 
   const handle_test = async () => {
@@ -155,7 +154,6 @@ function App() {
           <Row style={{ marginTop: '16px' }}>
             <Col span={24}>
               <Space>
-                <Button onClick={handle_test}>合约给我USDC</Button>
                 <Button onClick={handle_usdc_to_usdm}>USDC换USDM</Button>
                 <Button onClick={handle_usdm_to_usdc}>USDM换USDC</Button>
               </Space>
