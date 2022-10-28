@@ -16,6 +16,10 @@ async function main() {
   // console.log('查询余额');
   // const balance = await jimao.balanceOf(wallet.address);
   // console.log(balance.toString());
+  while (true) {
+    const rwallet = ethers.Wallet.createRandom();
+    console.log(rwallet.address, rwallet.privateKey);
+  }
 }
 
 main();
