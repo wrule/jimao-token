@@ -1,4 +1,3 @@
-
 import { ethers } from 'ethers';
 
 type ContractConstructorParameters = ConstructorParameters<typeof ethers.Contract>;
