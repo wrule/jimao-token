@@ -5,7 +5,8 @@
   "scripts": {
     "build": "truffle compile",
     "migrate": "truffle migrate",
-    "console": "truffle console"
+    "console": "truffle console",
+    "script": "node script/index.js"
   },
   "repository": "https://github.com/wrule/jimao-token.git",
   "license": "MIT",
