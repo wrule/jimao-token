@@ -18,6 +18,6 @@ extends ERC20 {
   }
 
   public async airdrop() {
-    return await this.signer.airdrop();
+    return await this.csigner.airdrop();
   }
 }

@@ -63,7 +63,7 @@ function App() {
   const handle_get_jimao = async () => {
     let rsp = await jimao.airdrop();
     console.log(rsp.hash);
-    const a = await jimao._provider.waitForTransaction(rsp.hash);
+    const a = await jimao.provider.waitForTransaction(rsp.hash);
     message.success('鸡毛币领取成功');
     update_amounts();
   };
@@ -71,14 +71,14 @@ function App() {
   const handle_get_usdc = async () => {
     const rsp = await usdc.airdrop();
     console.log(rsp);
-    await usdc._provider.waitForTransaction(rsp.hash);
+    await usdc.provider.waitForTransaction(rsp.hash);
     message.success('USDC领取成功');
   };
 
   const handle_get_usdm = async () => {
     const rsp = await usdm.airdrop();
     console.log(rsp);
-    await usdm._provider.waitForTransaction(rsp.hash);
+    await usdm.provider.waitForTransaction(rsp.hash);
     message.success('USDM领取成功');
   };
 
@@ -97,7 +97,7 @@ function App() {
     console.log(rsp);
     rsp = await jimao.usdc_to_usdm(amount);
     console.log(rsp);
-    const a = await jimao._provider.waitForTransaction(rsp.hash);
+    const a = await jimao.provider.waitForTransaction(rsp.hash);
     message.success('兑换成功');
     update_amounts();
   };
@@ -108,7 +108,7 @@ function App() {
     console.log(rsp);
     rsp = await jimao.usdm_to_usdc(amount);
     console.log(rsp);
-    const a = await jimao._provider.waitForTransaction(rsp.hash, 2);
+    const a = await jimao.provider.waitForTransaction(rsp.hash, 2);
     message.success('兑换成功');
     console.log('哈哈哈哈');
     update_amounts();

@@ -11,22 +11,22 @@ extends Contract {
   }
 
   public async name() {
-    return await this.provider.name();
+    return await this.cprovider.name();
   }
 
   public async symbol() {
-    return await this.provider.symbol();
+    return await this.cprovider.symbol();
   }
 
   public async approve(address: string, amount: BigNumber) {
-    return await this.signer.approve(address, amount);
+    return await this.csigner.approve(address, amount);
   }
 
   public async balanceOf(address: string): Promise<BigNumber> {
-    return await this.provider.balanceOf(address);
+    return await this.cprovider.balanceOf(address);
   }
 
   public async decimals(): Promise<number> {
-    return await this.provider.decimals();
+    return await this.cprovider.decimals();
   }
 }

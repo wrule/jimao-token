@@ -18,14 +18,14 @@ extends ERC20 {
   }
 
   public async airdrop() {
-    return await this.signer.airdrop();
+    return await this.csigner.airdrop();
   }
 
   public async usdc_to_usdm(amount: BigNumber) {
-    return await this.signer.usdc_to_usdm(amount);
+    return await this.csigner.usdc_to_usdm(amount);
   }
 
   public async usdm_to_usdc(amount: BigNumber) {
-    return await this.signer.usdm_to_usdc(amount);
+    return await this.csigner.usdm_to_usdc(amount);
   }
 }
