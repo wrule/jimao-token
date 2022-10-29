@@ -23,6 +23,7 @@ async function main() {
     value: ethers.utils.parseEther('0.106'),
   });
   console.log('事务', tx);
+  console.log('值', tx.value.toString());
   console.log('确认...');
   const a = await tx.wait();
   console.log('gasUsed', a.gasUsed.toString());
