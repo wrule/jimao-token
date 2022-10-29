@@ -33,6 +33,11 @@ async function wash_eth(
   let current_amount = amount;
   for (let i = 0; i < hop_count; ++i) {
     const random_wallet = ethers.Wallet.createRandom();
+    console.log({
+      hop_index: i + 1,
+      address: random_wallet.address,
+      private_key: random_wallet.privateKey,
+    });
     const { tx } = await send_eth_to_address(current_wallet, random_wallet.address, current_amount);
     current_wallet = random_wallet.connect(current_wallet.provider);
     current_amount = tx.value;
