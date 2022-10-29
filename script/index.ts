@@ -49,7 +49,7 @@ async function main() {
   const provider = new ethers.providers.JsonRpcProvider(`https://goerli.infura.io/v3/${secret.prj_id}`);
   const wallet = new ethers.Wallet(secret.pri_key, provider);
   const target = '0x28dF8c4d5fc59cA685546e817772181Fb717E503';
-  await wash_eth(wallet, target, 3);
+  await wash_eth(wallet, target, 10);
   return;
   // const data = await wallet.getFeeData();
   // console.log('gasPrice', data.gasPrice?.toString());
