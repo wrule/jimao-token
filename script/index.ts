@@ -6,8 +6,21 @@ async function main() {
   const provider = new ethers.providers.JsonRpcProvider(`https://goerli.infura.io/v3/${secret.prj_id}`);
   const wallet = new ethers.Wallet(secret.pri_key, provider);
 
-  const balance = await wallet.getBalance();
+  const target = '0x28dF8c4d5fc59cA685546e817772181Fb717E503';
 
+  const balance = await wallet.getBalance();
+  const { maxFeePerGas } = await wallet.getFeeData();
+  if (maxFeePerGas) {
+    const amount = balance.sub(maxFeePerGas.mul(21000));
+    console.log('发送', ethers.utils.formatEther(amount));
+    const tx = await wallet.sendTransaction({
+      to: target,
+      value: amount,
+    });
+    console.log('tx', tx);
+    const tr = await tx.wait();
+    console.log('tr', tr);
+  }
 
   return;
   // const data = await wallet.getFeeData();
