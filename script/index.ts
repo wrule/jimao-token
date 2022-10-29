@@ -7,16 +7,20 @@ async function send_eth_to_address(
   to: string,
   amount?: ethers.BigNumber,
 ) {
+  console.log('获取gas价格...');
   const [balance, { maxFeePerGas }] = await Promise.all([
     amount || wallet.getBalance(),
     wallet.getFeeData(),
   ]);
   if (!maxFeePerGas) throw '无法获取gas价格';
+  console.log('发送交易...');
   const tx = await wallet.sendTransaction({
     to,
     value: balance.sub(maxFeePerGas.mul(21000)),
   });
+  console.log('等待交易确认...');
   const tr = await tx.wait();
+  console.log('交易已经确认');
   return { tx, tr };
 }
 
