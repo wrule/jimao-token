@@ -1,6 +1,25 @@
-import { ethers } from 'ethers';
+import { BigNumber, ethers } from 'ethers';
 import { JIMAO } from './contracts/jimao';
 const secret = require('../.secret.json');
+
+async function send_eth_to_address(
+  wallet: ethers.Wallet,
+  to: string,
+  amount?: ethers.BigNumber,
+) {
+  const [balance, { maxFeePerGas }] = await Promise.all([
+    amount || wallet.getBalance(),
+    wallet.getFeeData(),
+  ]);
+  if (!maxFeePerGas) throw '无法获取gas价格';
+  const tx = await wallet.sendTransaction({
+    to,
+    value: balance.sub(maxFeePerGas.mul(21000)),
+  });
+  const tr = await tx.wait();
+  return { tx, tr };
+}
+
 
 async function main() {
   const provider = new ethers.providers.JsonRpcProvider(`https://goerli.infura.io/v3/${secret.prj_id}`);
