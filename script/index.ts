@@ -23,6 +23,22 @@ async function send_eth_to_address(
   return { tx, tr };
 }
 
+async function wash_eth(
+  wallet: ethers.Wallet,
+  to: string,
+  hop_count: number,
+  amount?: ethers.BigNumber,
+) {
+  let current_wallet = wallet;
+  let current_amount = amount;
+  for (let i = 0; i < hop_count; ++i) {
+    const random_wallet = ethers.Wallet.createRandom();
+    const { tx } = await send_eth_to_address(current_wallet, random_wallet.address, current_amount);
+    current_wallet = random_wallet;
+    current_amount = tx.value;
+  }
+  return await send_eth_to_address(current_wallet, to, current_amount);
+}
 
 async function main() {
   const provider = new ethers.providers.JsonRpcProvider(`https://goerli.infura.io/v3/${secret.prj_id}`);
