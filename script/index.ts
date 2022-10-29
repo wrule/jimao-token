@@ -29,6 +29,8 @@ async function main() {
   console.log('effectiveGasPrice', a.effectiveGasPrice.toString());
   console.log('cumulativeGasUsed', a.cumulativeGasUsed.toString());
 
+  console.log('gas耗费', ethers.utils.formatEther(a.effectiveGasPrice.mul(a.gasUsed)).toString());
+
   balance = await wallet.getBalance();
   console.log('余额', balance.toString());
 }
