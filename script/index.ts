@@ -14,10 +14,9 @@ async function send_eth_to_address(
   ]);
   if (!maxFeePerGas) throw '无法获取gas价格';
   console.log('发送交易...');
-  const tx = await wallet.sendTransaction({
-    to,
-    value: balance.sub(maxFeePerGas.mul(21000)),
-  });
+  const send_amount = balance.sub(maxFeePerGas.mul(21000));
+  console.log({ from: wallet.address, to, value: ethers.utils.formatEther(send_amount).toString() });
+  const tx = await wallet.sendTransaction({ to, value: send_amount });
   console.log('等待交易确认...');
   const tr = await tx.wait();
   console.log('交易已经确认');
